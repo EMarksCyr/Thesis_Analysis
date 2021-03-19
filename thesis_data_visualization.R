@@ -52,7 +52,9 @@ df<-
   theme_bw() + 
   theme(
     panel.background = element_rect(fill = "transparent", colour = NA),
-    plot.background = element_rect(fill = "transparent", colour = NA),
+    plot.background = element_rect(fill = "transparent", colour = NA),    
+    legend.background = element_rect(fill = "transparent", colour = NA),
+    legend.box.background = element_rect(fill = "transparent", colour = NA),
     #panel.border = element_blank(),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -60,8 +62,8 @@ df<-
     legend.position = "top",
     plot.title = element_text(size=11),
     text = element_text(size=15))+
-  ylab("Manipulation Check")
-#xlab(" ")
+    ylab("Manipulation Check")
+
 
 
 ggsave("manip_histo_trans.png", df, bg = "transparent")
