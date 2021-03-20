@@ -20,12 +20,14 @@ setwd("C:/Users/elizk/OneDrive/Desktop/Thesis/Data analysis")
 sample_size = df %>% group_by(Condition)%>% dplyr::summarize(num=n())
 
 #violin chart wrapping boxplot
-df%>%
+
+vbp <-
+  df%>%
   left_join(sample_size)%>%
   mutate(myaxis = paste0(Condition, "\n", "n=", num))%>%
-  ggplot(aes(x=myaxis, y=ManipulationCheck_Item1, fill=Condition)) +
-  geom_violin(width=0.9, size=0.2, color= NA) +
-  scale_fill_manual(values=c("#C5CBE2","#f6c6c6")) +
+  ggplot(aes(x=myaxis, y=Mistreat_Item1, fill=Condition, colour = Condition)) +
+  geom_violin(width=0.9, size=0.2, alpha=0.5) +
+  scale_fill_manual(values=c("#f6c6c6", "#C5CBE2")) +
   geom_boxplot(width=0.4, alpha=0.2) +
   #ggpubr::theme_transparent() +
   theme_bw() + 
@@ -40,14 +42,17 @@ df%>%
     #panel.grid.major = element_blank(),
     #panel.grid.minor = element_blank(),
   )+
-  #ggtitle("Manipulation Check Item 1") +
+  #ggtitle("Mistreatment Item 1") +
   xlab("Condition") +
-  ylab("Manipulation Check")
+  ylab("Mistreatment Justification Item 1")
+vbp
+
+ggsave("Mistreat1_vio_box_plot.png", vbp, bg = "transparent")
 
 
 #histogram
-df<- 
-  ggplot(df, aes(x=ManipulationCheck_Item1, color=Condition, fill=Condition)) +
+his<- 
+  ggplot(df, aes(x=Mistreat_Item1, color=Condition, fill=Condition)) +
   scale_fill_manual(values=c("#f6c6c6", "#C5CBE2")) +
   geom_histogram(alpha=0.5, position="identity", binwidth=1, size=1) +
   #ggpubr::theme_transparent() +
@@ -60,15 +65,15 @@ df<-
     #panel.border = element_blank(),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
-    axis.title.x=element_blank(),
     legend.position = "top",
     plot.title = element_text(size=11),
     text = element_text(size=15))+
-    ylab("Manipulation Check")
+    xlab("Mistreatment Justification Item 1") +
+    ylab("Frequency")
+his
 
 
-
-ggsave("manip_histo_trans.png", df, bg = "transparent")
+ggsave("Mistreat1_histo.png", his, bg = "transparent")
 
 #box plot
 
