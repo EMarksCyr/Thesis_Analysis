@@ -17,9 +17,7 @@ setwd("C:/Users/elizk/OneDrive/Desktop/Thesis/Data analysis")
 
 
 #sample size
-sample_size = df %>%
-  group_by(Condition)%>%
-  summarize(num=n())
+sample_size = df %>% group_by(Condition)%>% dplyr::summarize(num=n())
 
 #violin chart wrapping boxplot
 df%>%
@@ -32,6 +30,10 @@ df%>%
   #ggpubr::theme_transparent() +
   theme_bw() + 
   theme(
+    panel.background = element_rect(fill = "transparent", colour = NA),
+    plot.background = element_rect(fill = "transparent", colour = NA),    
+    legend.background = element_rect(fill = "transparent", colour = NA),
+    legend.box.background = element_rect(fill = "transparent", colour = NA),
     legend.position = "none",
     plot.title = element_text(size=11),
     text = element_text(size=15)
