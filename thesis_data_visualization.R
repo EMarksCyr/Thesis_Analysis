@@ -102,7 +102,7 @@ df%>%
   ggplot(aes(x=Condition, y=ManipulationCheck_Item1, fill=Condition)) +
   geom_violin()
 
-#making a new data fram with select columns
+#making a new data fromm with select columns
 
 df_new <- df%>%
   select(ManipulationCheck_Item1, Fun_Item1, WellBeing_Item1, RewardWork_Item1, Competitive_Item1, ExploitLegit_Item1,
@@ -110,30 +110,49 @@ df_new <- df%>%
          WorkHours_Item1, WorkHours_Item2, RewardWork_Item2, Competitive_Item1, Competitive_Item2,
          CompanyFirst_Item1, Loyalty_Item1, Gratitude_Item1)
 df_new
+
+
+
+#Data frame just for the main items
+df_main <- df%>%
+  select(ExploitLegit_Item1, ExploitLegit_Item2, Mistreat_Item1, Mistreat_Item2, Perfect_Item1, Perfect_Item2)
+df_main
 #Correlation matrix
-data(df_new)
-cormat <- round(cor(df_new), 2)
+data(df_main)
+cormat <- round(cor(df_main), 2)
 head(cormat)
 
 #Compute a matrix of correlation p-values
-p.mat <- cor_pmat(df_new)
+p.mat <- cor_pmat(df_main)
 head(p.mat)
 
 #visualize the correlation matrix with ggcorrplot
-ggcorrplot(cormat, type = "upper",
-           lab = TRUE, p.mat = p.mat, insig = "blank",
+maincorr <- ggcorrplot(cormat, type = "upper",
+           lab = TRUE, p.mat = p.mat,  #insig = "blank"
            outline.color = "white",
-           legend.position = "left",
-           colors = c("#0047bd", "white", "#bd0012"))
+           #legend.position = "left",
+           colors = c("#0047bd", "white", "#bd0012")) +
+            theme(
+              panel.background = element_rect(fill = "transparent", colour = NA),
+              plot.background = element_rect(fill = "transparent", colour = NA),    
+              legend.background = element_rect(fill = "transparent", colour = NA),
+              legend.box.background = element_rect(fill = "transparent", colour = NA))
+
+ggsave("Main_Item_Corr.png", maincorr, bg = "transparent")
 
 #correlation 
-cor.test(df$ExploitLegit_Item1, df$ExploitLegit_Item2) 
+cor.test(df$Perfect_Item2, df$ExploitLegit_Item2) 
 
-#t-test
+#t-test, assuming normal data
 stat.test <- df %>%
   t_test(ManipulationCheck_Item1 ~ Condition, var.equal = TRUE) %>%
   add_significance()
 stat.test
+
+#Wilcoxon/Mann-Whitney U test, non-normal alternative to t-test
+res <- wilcox.test(Perfect_Item2 ~ Condition, data = df,
+                   exact = FALSE)
+res
 
 #adds stats to box plot
 stat.test <- stat.test %>% add_xy_position(x = "Condition")

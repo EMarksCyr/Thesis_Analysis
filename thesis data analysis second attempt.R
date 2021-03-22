@@ -69,7 +69,7 @@ df %>%
    labs(subtitle = get_test_label(stat.test, detailed = TRUE))
 
 #Shapiro-Wilk test for normality
- shapiro.test(df$ExploitLegit_Item2)
+ shapiro.test(df$Perfect_Item2)
  
  #pearson's R correlation between 2 variables
  
