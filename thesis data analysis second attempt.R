@@ -3,8 +3,10 @@
 
 if(!require("broom")) install.packages("broom")
 if(!require("fs")) install.packages("fs")
+)
 pacman::p_load(pacman, rio, tidyverse, broom, fs, ggpubr, rstatix, datarium)
 
+library(ggpubr)
 getwd()
 setwd("C:/Users/elizk/OneDrive/Desktop/Thesis/Data analysis")
 (df <- import("recoded_clean_data.csv") %>% as_tibble())
@@ -33,9 +35,9 @@ bxp
 #identifying outliers, don't think this is working
 df %>%
     group_by(Condition) %>%
-    identify_outliers(ManipulationCheck_Item1)
+    identify_outliers(Mistreat_Item1)
 
-identify_outliers(df,ManipulationCheck_Item1)
+identify_outliers(df,Mistreat_Item1)
 
 
 #qq plot to check normality of groups apparently?
@@ -55,7 +57,7 @@ stat.test
 #cohens d for effect size
 
 df %>%
-  cohens_d(ManipulationCheck_Item1 ~ Condition, var.equal = TRUE)
+  cohens_d(Perfect_Item2 ~ Condition, var.equal = TRUE)
 
 #report
 #adds stats to box plot
@@ -66,4 +68,8 @@ df %>%
    stat_pvalue_manual(stat.test, tip.length = 0) +
    labs(subtitle = get_test_label(stat.test, detailed = TRUE))
 
-
+#Shapiro-Wilk test for normality
+ shapiro.test(df$ExploitLegit_Item2)
+ 
+ #pearson's R correlation between 2 variables
+ 
