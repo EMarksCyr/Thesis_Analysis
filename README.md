@@ -5,7 +5,7 @@
 
 ### Conference Poster 
 
- ![Poster ](Output/Cyr_Thesis_AOPUTC_Poster_short.pdf)
+ ![Poster ](Output/Cyr_Thesis_AOPUTC_Poster_short.png)
  
    
 ### Focus of Study
