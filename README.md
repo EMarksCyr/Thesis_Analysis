@@ -15,7 +15,7 @@ The focus of this study was understanding how cues of a company's culture (ie., 
 ### Theoretical Foundations 
 
 #### Competing Values Framework 
-The focus of this study was understanding how cues of a company's culture (i.e., the shared beliefs, values and assumptions) impact the way outsiders perceive employee treatment within. Namely, we wanted to see if observers were more likely to justify mistreatment and exploitation within an organization if they had previously encountered information that labelled the company as one that treated its employees like family members, was a fun place to be. 
+The Competing Values Framework is a diagnostic framework for identifying organizational culture based on two dimensions. The framework posits that an organization must choose how to prioritze internal focus (on employees, internal systems, etc.) versus external factors (market health, competitors, customers, etc. ) and they must prioritze between flexibility (the ability to react/make changes rapidly) and stability (the ability to maintain order. These decisions are not binary but dimensional and which quadrant an organization falls into defines their culture (as shown below). These varying cultures have been associated with various employee outcomes (i.e. clan culture with increased employee well being and engagement). 
 
 ![CVF](Output/imgs/CVF.png)
 
