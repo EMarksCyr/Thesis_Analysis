@@ -26,7 +26,7 @@ System justification theory suggests that if a company were to present a signal 
 
 ### Hypotheses
 
-We hypothesized that if a participant received culture signals that implied a prioritization on internal focus (in this case, clan culture perks were used as signals) when being introduced to a fictitious company, they would be more likely to justify instances of exploitation, mistreatment and unfair expectations observed towards employees of the company to protect their positive image.
+I hypothesized that if a participant received culture signals that implied a prioritization on internal focus (in this case, clan culture perks were used as signals) when being introduced to a fictitious company, they would be more likely to justify instances of exploitation, mistreatment and unfair expectations observed towards employees of the company to protect their positive image.
 
 ![Hyptheses](Output/imgs/Hyptheses.png)
 
